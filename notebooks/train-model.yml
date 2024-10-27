@@ -1,0 +1,17 @@
+$schema: https://azuremlschemas.azureedge.net/latest/commandComponent.schema.json
+name: train_model
+display_name: Train a random forest model
+version: 1
+type: command
+inputs:
+  training_data: 
+    type: uri_folder
+outputs:
+  trained_model:
+    type: mlflow_model
+code: ./src
+environment: azureml:AzureML-sklearn-0.24-ubuntu18.04-py37-cpu@latest
+command: >-
+  python train-model.py 
+  --training_data ${{inputs.training_data}} 
+  --trained_model ${{outputs.trained_model}} 

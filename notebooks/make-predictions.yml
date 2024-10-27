@@ -1,0 +1,20 @@
+$schema: https://azuremlschemas.azureedge.net/latest/commandComponent.schema.json
+name: make_predictions
+display_name: Makes predictions using a trained random forest model
+version: 1
+type: command
+inputs:
+  sample_data: 
+    type: uri_folder
+  trained_model:
+    type: mlflow_model
+outputs:
+  predictions_data:
+    type: uri_folder
+code: ./src
+environment: azureml:AzureML-sklearn-0.24-ubuntu18.04-py37-cpu@latest
+command: >-
+  python make-predictions.py 
+  --sample_data ${{inputs.sample_data}} 
+  --trained_model ${{inputs.trained_model}} 
+  --predictions_data ${{outputs.predictions_data}} 
