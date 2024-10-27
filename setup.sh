@@ -40,14 +40,14 @@ az ml compute create --name ${COMPUTE_CLUSTER} --size ${COMPUTE_SIZE} --max-inst
 
 # Create a file data asset
 echo "Creating a data asset with name: " ${project}-local
-az ml data create --name "${project}-local" --type uri_file --description Data asset pointing to a local file --path ./data/titanic.csv 
+az ml data create --name "${project}-local" --type uri_file --description "Data asset pointing to a local file" --path ./data/titanic.csv 
 
 # Create a file data asset
 echo "Creating a data asset with name: " ${project}-sample-local
-az ml data create --name "${project}-sample-local" --type uri_file --description Data asset pointing to a local file --path ./data/titanic_sample.csv
+az ml data create --name "${project}-sample-local" --type uri_file --description "Data asset pointing to a local file" --path ./data/titanic_sample.csv
 
 # Create components
 echo "Creating components"
-az ml component create --file ./prep_data.yml 
-az ml component create --file ./train_model.yml 
-az ml component create --file ./make_predictions.yml 
+az ml component create --file ./prep-data.yml 
+az ml component create --file ./train-model.yml 
+az ml component create --file ./make-predictions.yml 
