@@ -1,15 +1,19 @@
 #! /usr/bin/sh
 
-# setup variables
+# project name
 project="titanic"
-suffix="11235"
+
+# Create random string
+guid=$(cat /proc/sys/kernel/random/uuid)
+suffix=${guid//[-]/}
+suffix=${suffix:0:18}
 
 # Set the necessary variables
-RESOURCE_GROUP="rg-${project}-${suffix}"
+RESOURCE_GROUP="rg-${suffix}"
 RESOURCE_PROVIDER="Microsoft.MachineLearning"
 REGION="westus"
-WORKSPACE_NAME="mlw-${project}-${suffix}"
-COMPUTE_INSTANCE="ci-${project}-${suffix}"
+WORKSPACE_NAME="mlw-${suffix}"
+COMPUTE_INSTANCE="ci-${suffix}"
 COMPUTE_SIZE="STANDARD_A1_V2"
 COMPUTE_CLUSTER="aml-cluster"
 
