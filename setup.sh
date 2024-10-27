@@ -1,16 +1,16 @@
 #! /usr/bin/sh
 
 # setup variables
-project="proj"
-suffix="aarev"
-COMPUTE_SIZE="STANDARD_A1_V2"
+project="titanic"
+suffix="11235"
 
 # Set the necessary variables
-RESOURCE_GROUP="rg-proj-${suffix}"
+RESOURCE_GROUP="rg-${project}-${suffix}"
 RESOURCE_PROVIDER="Microsoft.MachineLearning"
 REGION="westus"
 WORKSPACE_NAME="mlw-${project}-${suffix}"
 COMPUTE_INSTANCE="ci-${project}-${suffix}"
+COMPUTE_SIZE="STANDARD_A1_V2"
 COMPUTE_CLUSTER="aml-cluster"
 
 # Register the Azure Machine Learning resource provider in the subscription
@@ -33,3 +33,17 @@ az ml compute create --name ${COMPUTE_INSTANCE} --size ${COMPUTE_SIZE} --type Co
 # Create compute cluster
 echo "Creating a compute cluster with name: " $COMPUTE_CLUSTER
 az ml compute create --name ${COMPUTE_CLUSTER} --size ${COMPUTE_SIZE} --max-instances 2 --type AmlCompute 
+
+# Create a file data asset
+echo "Creating a data asset with name: " ${project}-local
+az ml data create --name "${project}-local" --type uri_file --description Data asset pointing to a local file --path ./data/titanic.csv 
+
+# Create a file data asset
+echo "Creating a data asset with name: " ${project}-sample-local
+az ml data create --name "${project}-sample-local" --type uri_file --description Data asset pointing to a local file --path ./data/titanic_sample.csv
+
+# Create components
+echo "Creating components"
+az ml component create --file ./prep_data.yml 
+az ml component create --file ./train_model.yml 
+az ml component create --file ./make_predictions.yml 
