@@ -26,10 +26,9 @@ def main(args):
 # function reads in data
 def get_data(path):
     print("Reading training data...")
-    #df = pd.read_csv(path)
     all_files = glob.glob(path + "/*.csv")
     df = pd.concat((pd.read_csv(f) for f in all_files), sort=False)
-    df.dropna(inplace=True)
+    
     return df
 
 # function that splits data
