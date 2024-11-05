@@ -34,7 +34,9 @@ def get_data(path):
 # function that splits data
 def split_data(df):
     print("Splitting data...")
-    X, y = df[['pclass', 'sex', 'age', 'sibsp', 'parch', 'ticket', 'fare','cabin', 'embarked']].values, df['survived'].values
+    remove = ['passengerid', 'survived', 'name', 'fname']
+    features = [feat for feat in df.columns if feat not in remove]
+    X, y = df[features].values, df['survived'].values
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.33, random_state=2)
 
     return X_train, X_test, y_train, y_test

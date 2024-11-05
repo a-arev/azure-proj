@@ -1,0 +1,28 @@
+FROM mcr.microsoft.com/azureml/openmpi3.1.2-ubuntu18.04:20230227.v1
+
+ENV AZUREML_CONDA_ENVIRONMENT_PATH /azureml-envs/sklearn-1.5.2
+# Create conda environment
+RUN conda create -p $AZUREML_CONDA_ENVIRONMENT_PATH \
+    python=3.10.11 pip=22.3.1
+
+# Prepend path to AzureML conda environment
+ENV PATH $AZUREML_CONDA_ENVIRONMENT_PATH/bin:$PATH
+
+# Install pip dependencies
+RUN pip install 'matplotlib' \
+                'psutil' \
+                'tqdm' \
+                'pandas' \
+                'scipy' \
+                'category_encoders' \
+                'numpy' \
+                'ipykernel' \
+                'azureml-core' \
+                'azureml-defaults' \
+                'azureml-mlflow' \
+                'azureml-telemetry' \
+                'scikit-learn==1.5.2' \
+                'debugpy'
+
+# This is needed for mpi to locate libpython
+ENV LD_LIBRARY_PATH $AZUREML_CONDA_ENVIRONMENT_PATH/lib:$LD_LIBRARY_PATH

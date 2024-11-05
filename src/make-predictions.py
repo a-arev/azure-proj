@@ -28,7 +28,9 @@ def make_predictions(df, model_path):
     df1 = df.drop(['passengerid'], axis=1)
     # load model
     model = mlflow.pyfunc.load_model(model_path)
-    preds = model.predict(df1[['pclass', 'sex', 'age', 'sibsp', 'parch', 'ticket', 'fare','cabin', 'embarked']])
+    remove = ['passengerid', 'survived', 'name', 'fname']
+    features = [feat for feat in df.columns if feat not in remove]
+    preds = model.predict(df1[features])
 
     return preds
 

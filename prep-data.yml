@@ -1,17 +1,23 @@
 $schema: https://azuremlschemas.azureedge.net/latest/commandComponent.schema.json
 name: prep_data
-display_name: Prepare data for training/predictions
+display_name: Prepare data for training and predictions
 version: 1
 type: command
 inputs:
-  unclean_data: 
+  unclean_titanic: 
+    type: uri_file
+  unclean_sample: 
     type: uri_file
 outputs:
-  clean_data:
+  clean_titanic:
+    type: uri_folder
+  clean_sample:
     type: uri_folder
 code: ./src
-environment: azureml:AzureML-sklearn-0.24-ubuntu18.04-py37-cpu@latest
+environment: azureml:titanic-env@latest
 command: >-
   python prep-data.py 
-  --unclean_data ${{inputs.unclean_data}}
-  --clean_data ${{outputs.clean_data}}
+  --unclean_titanic ${{inputs.unclean_titanic}}
+  --unclean_sample ${{inputs.unclean_sample}}
+  --clean_titanic ${{outputs.clean_titanic}}
+  --clean_sample ${{outputs.clean_sample}}
