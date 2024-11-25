@@ -33,4 +33,4 @@ on the leader board (out of ~16,000).
 - **train-model.yml** - specifications file for *train-model.py* script
 
 # Wiki Page 
-See Wiki page (menu above) for information on recreating Azure environment and visualizing scripts with schematics.
+See [Wiki page](https://github.com/a-arev/titanic-competition/wiki) (menu above) for information on recreating Azure environment and visualizing scripts with schematics.
