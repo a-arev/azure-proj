@@ -31,3 +31,6 @@ on the leader board (out of ~16,000).
 - **setup.sh** - shell script used to setup workspace, compute, and data assets
 - **titanic-env.txt** - file with context for building enviroment for job
 - **train-model.yml** - specifications file for *train-model.py* script
+
+# Wiki Page 
+See Wiki page (menu above) for information on recreating Azure environment and visualizing scripts with schematics.
