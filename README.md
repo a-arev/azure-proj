@@ -16,6 +16,9 @@ made to the training dataset:
 The model that these notebooks provide scored a **accuracy of 0.80143** on Kaggle. This corresponds to the 778th spot 
 on the leader board (out of ~16,000).
 
+This is the ROC curve that corresponds to the training dataset from kaggle (i.e. dataset used for building model, not the dataset used for submissions).
+![ROC-Curve](https://github.com/user-attachments/assets/423bd1fc-6441-4f09-b3f1-6cbf388fdcef)
+
 # Files
 ---
 - data
