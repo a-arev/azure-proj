@@ -31,6 +31,7 @@ This is the ROC curve that corresponds to the training dataset from kaggle (i.e.
 - **make-predictions.yml** - specifications file for *make-predictions.py* script
 - **pipeline-job.ipynb** - jupyter notebook used to orchestrate pipeline job
 - **prep-data.yml** - specifications file for *prep-data.py* script
+- **queries-titanic.mysql** - script that queries _titanic.csv_ for EDA
 - **setup.sh** - shell script used to setup workspace, compute, and data assets
 - **titanic-env.txt** - file with context for building enviroment for job
 - **train-model.yml** - specifications file for *train-model.py* script
