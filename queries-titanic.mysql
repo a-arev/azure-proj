@@ -1,0 +1,66 @@
+-- MySQL queries for titanic dataset
+
+-- 1. How many passengers in this dataset?
+
+SELECT @total_passengers := COUNT(*) AS 'No. of Passengers'
+FROM titanic_schema.train;
+
+-- 2. Who were the Top 10 passengers with the highest fare?
+
+SELECT * FROM titanic_schema.train
+ORDER BY Fare DESC, Name DESC
+LIMIT 10;
+
+-- 3. How many men/women were aboard? What are the proportions?
+
+SELECT Sex,
+       COUNT(*) AS 'No. Passengers',
+       COUNT(*)/@total_passengers*100 AS '% of Passengers'
+FROM titanic_schema.train
+GROUP BY Sex
+ORDER BY Sex DESC;
+
+-- 4. What percentage of men/women survived? How many?
+
+SELECT Sex,
+       COUNT(*)/@total_passengers*100 AS '% Survived',
+       COUNT(*) AS 'No. Survived'
+FROM titanic_schema.train
+WHERE Survived = true
+GROUP BY Sex
+ORDER BY Sex DESC;
+
+-- 5. How many boy and girls were aboard? What percentages survived?
+
+SELECT Sex, 
+       COUNT(*) AS 'No. of Minors', 
+       SUM(Survived)/COUNT(*)*100 AS '% Survived'
+FROM titanic_schema.train
+WHERE Age < 18
+GROUP BY Sex;
+
+-- 6. How many senior men/women were aboard? What percentages survived?
+
+SELECT Sex, 
+       COUNT(*) AS 'No. of Adults', 
+       SUM(Survived)/COUNT(*)*100 AS '% Survived'
+FROM titanic_schema.train
+WHERE Age >= 45
+GROUP BY Sex;
+
+-- 7. What percentage of passengers survived for each ticket class?
+
+SELECT Pclass,
+       COUNT(*)/@total_passengers*100 AS '% Survived'
+FROM titanic_schema.train
+WHERE Survived = true
+GROUP BY Pclass
+ORDER BY Pclass ASC;
+
+-- 8. How many passengers embarked on each port? What percentages survived?
+
+SELECT Embarked, 
+       COUNT(*) AS 'No. Passengers',
+       COUNT(case when Survived = true then 1 end)/COUNT(*)*100 as '% Survived'
+FROM titanic_schema.train
+GROUP BY Embarked;
