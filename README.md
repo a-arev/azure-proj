@@ -37,4 +37,4 @@ This is the ROC curve that corresponds to the training dataset from kaggle (i.e.
 - **train-model.yml** - specifications file for *train-model.py* script
 
 # Wiki Page 
-See [Wiki page](https://github.com/a-arev/titanic-competition/wiki) (menu above) for information on recreating Azure environment and visualizing scripts with schematics.
+See [Wiki page](https://github.com/a-arev/titanic-competition/wiki) (menu above) for information on recreating Azure environment, visualizing scripts with schematics, and seeing the results from MySQL script.
