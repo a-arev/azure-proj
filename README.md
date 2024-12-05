@@ -28,6 +28,9 @@ This is the ROC curve that corresponds to the training dataset from kaggle (i.e.
     - **make-predictions.py** - script for making predictions step in pipeline job
     - **prep-data.py** - script for prepping data step in pipeline job
     - **train-model.py** - script for training model step in pipeline job
+- **LICENSE** - file that explains repo license type
+- **README.md** - markdown file used displaying repo this info you are reading
+- **index.html** - HTML file for displaying [Tableau dashboard on website](https://a-arev.github.io/titanic-competition/)
 - **make-predictions.yml** - specifications file for *make-predictions.py* script
 - **pipeline-job.ipynb** - jupyter notebook used to orchestrate pipeline job
 - **prep-data.yml** - specifications file for *prep-data.py* script
@@ -37,4 +40,4 @@ This is the ROC curve that corresponds to the training dataset from kaggle (i.e.
 - **train-model.yml** - specifications file for *train-model.py* script
 
 # Wiki Page 
-See [Wiki page](https://github.com/a-arev/titanic-competition/wiki) (menu above) for information on recreating Azure environment, visualizing scripts with schematics, and seeing the results from MySQL script.
+See [Wiki page](https://github.com/a-arev/titanic-competition/wiki) (menu above) for information on recreating Azure environment, visualizing scripts with schematics, seeing the results from MySQL EDA script, and exploring Tableau dashboard for predictions data.
